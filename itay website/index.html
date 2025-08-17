@@ -35,8 +35,20 @@
     .nav-links a:hover{color:var(--brand)}
     .btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:var(--shadow);transition:all .3s ease}
     .btn:hover{background:#0284c7;transform:translateY(-2px)}
+    /* Hamburger base style */
+    .hamburger{display:none;border:1px solid #dde4ee;background:#fff;border-radius:12px;padding:10px 12px;font-size:20px;line-height:1}
+    .hamburger:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(14,165,233,.25)}
 
     @media(max-width:880px){.nav-links{display:none}.hamburger{display:block}}
+
+    /* Mobile menu */
+    .mobile-menu{position:fixed;top:var(--header-h,72px);right:0;left:0;background:#fff;border-bottom:1px solid #e7eef6;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform .25s ease,opacity .25s ease;box-shadow:0 10px 20px rgba(2,6,23,.06);z-index:49}
+    .mobile-menu a{display:block;padding:16px 20px;text-decoration:none;color:#0f172a;font-weight:700;border-top:1px solid #eef3f8}
+    @media(min-width:881px){.mobile-menu{display:none}}
+    .menu-backdrop{display:none;position:fixed;inset:0;background:rgba(2,6,23,.45);z-index:48}
+    .menu-open .mobile-menu{transform:translateY(0);opacity:1;pointer-events:auto}
+    .menu-open .menu-backdrop{display:block}
+    .menu-open{overflow:hidden}
 
     .hero{position:relative;isolation:isolate;text-align:center;color:#fff}
     .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.65))}
@@ -75,9 +87,13 @@
 
     /* ===== Responsive tweaks ===== */
     @media (max-width:480px){
-      .brand img{width:48px; height:48px}
-      .hero .container{min-height:72vh; padding-block:56px}
+      .brand img{width:44px; height:44px}
+      .nav{padding:10px 0}
+      .hero .container{min-height:72vh; padding:20px}
+      .hero-card{padding:20px; border-radius:18px}
+      h1{font-size:clamp(24px,8vw,34px)}
     }
+    
 
     footer{background:#0f172a;color:#cbd5e1;padding-block:28px;margin-top:36px}
     .foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
@@ -101,9 +117,17 @@
         <a href="#services">שירותים</a>
         <a href="#contact" class="btn">דברו איתנו</a>
       </nav>
-      <button class="hamburger">☰</button>
+      <button class="hamburger" aria-label="פתח תפריט" aria-expanded="false">☰</button>
     </div>
   </header>
+
+  <!-- Mobile menu + backdrop -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="ניווט נייד">
+    <a href="#about">עלינו</a>
+    <a href="#services">שירותים</a>
+    <a href="#contact" class="btn" style="margin:12px 16px">דברו איתנו</a>
+  </div>
+  <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
 
   <main id="top" class="hero">
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/logo.png">
@@ -199,7 +223,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Apps Script endpoint (already set by you)
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFYHWX4XNuQWZMIl7cz0_UA65v5A8Xzg2ZRdK1EYjEpFVll4OLQ5EdAKiPfPmN6SbBLQ/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbywdV5eq8fP37utaAcStBsxFzybyKfLYLZBPu1b2EkErBmVEFxwDwSkdgL4ZaiTDA8d/exec';
 
     // Fast submit -> background send -> immediate redirect
     const form = document.getElementById('main-form');
@@ -242,6 +266,24 @@
       });
     }
 
+    // Mobile menu logic
+    const burger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuBackdrop = document.getElementById('menuBackdrop');
+    function setMenu(open){
+      document.body.classList.toggle('menu-open', open);
+      if (burger) burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    if (burger){
+      burger.addEventListener('click', ()=> setMenu(!document.body.classList.contains('menu-open')));
+    }
+    if (menuBackdrop){ menuBackdrop.addEventListener('click', ()=> setMenu(false)); }
+    mobileMenu?.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> setMenu(false)));
+    const headerEl = document.querySelector('header');
+    function applyHeaderH(){ if(headerEl) document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px'); }
+    applyHeaderH();
+    window.addEventListener('resize', applyHeaderH);
+
     // Reveal on scroll
     const targets = document.querySelectorAll('.card, .hero-card');
     if (targets.length) {
@@ -254,6 +296,7 @@
   </script>
 </body>
 </html>
+
 
 
 
