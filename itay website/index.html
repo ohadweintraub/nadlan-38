@@ -142,9 +142,17 @@
     </div>
   </main>
 
+  <section id="offer">
+    <div class="container card" style="text-align:center">
+      <h2>🎁 מבצע פתיחה מיוחד לבעלי נכסים</h2>
+      <p><strong>בלעדיות = מתנה 🎁</strong></p>
+      <p>כל בעל נכס שייתן לנו בלעדיות, וייסגר חוזה שכירות או מכירה – יקבל מאיתנו מתנה שווה לבחירה, כהוקרה על האמון.</p>
+    </div>
+  </section>
+
   <section id="about">
     <div class="container card">
-      <h2>למה לבעלי נכסים לעבוד איתנו?</h2>
+      <h2>למה לבעלי נכנסים לעבוד איתנו?</h2>
       <ul>
         <li>✅ שירות ללא עלות – בעלי נכסים לא משלמים, מקבלים שירות פרימיום.</li>
         <li>✅ חוסך לכם זמן – טיפול מלא בכל תהליך השיווק והתקשורת.</li>
@@ -157,7 +165,7 @@
 
   <section id="services">
     <div class="container card">
-      <h2>נדל״ן 38 — למה ללקוחות לבחור בנו</h2>
+      <h2>נדל״ן 38 — ?למה ללקוחות לבחור בנו</h2>
       <p>נמאס לך לרדוף אחרי מודעות?<br>לחכות שמישהו יענה? לראות דירה ולהתאכזב?</p>
       <p><strong>אני לא מתווך רגיל. אני מייצג רק אותך.</strong></p>
       <ul>
@@ -170,13 +178,7 @@
     </div>
   </section>
 
-  <section id="offer">
-    <div class="container card" style="text-align:center">
-      <h2>🎁 מבצע פתיחה מיוחד לבעלי נכסים</h2>
-      <p><strong>בלעדיות = מתנה 🎁</strong></p>
-      <p>כל בעל נכס שייתן לנו בלעדיות, וייסגר חוזה שכירות או מכירה – יקבל מאיתנו מתנה שווה לבחירה, כהוקרה על האמון.</p>
-    </div>
-  </section>
+  
 
   <section id="contact">
     <div class="container card">
@@ -209,20 +211,20 @@
       <div><strong>נדל״ן 38</strong> — © <span id="year"></span></div>
       <div class="contact">
         <a href="tel:+972548321334">טלפון</a>
-        <a href="https://wa.me/972548321334" target="_blank">WhatsApp</a>
+        <a href="https://wa.me/972548321334" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         <a href="mailto:info@nadlan38.co.il">info@nadlan38.co.il</a>
       </div>
     </div>
   </footer>
 
-  <a class="wa-float" href="https://wa.me/972548321334" target="_blank" aria-label="WhatsApp">🟢</a>
+  <a class="wa-float" href="https://wa.me/972548321334" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
   <script>
     // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Apps Script endpoint (already set by you)
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbywdV5eq8fP37utaAcStBsxFzybyKfLYLZBPu1b2EkErBmVEFxwDwSkdgL4ZaiTDA8d/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzB02z1tRgVpLlLekVhey4GHycL15rYxIiZiG9vfKp31SRvNo6e3RIk6WnS7m0mi-lZLQ/exec';
 
     // Fast submit -> background send -> immediate redirect
     const form = document.getElementById('main-form');
@@ -261,7 +263,7 @@
         } catch (e) { /* ignore */ }
 
         // Redirect immediately to success page
-        window.location.href = 'success.html';
+        setTimeout(()=>{ window.location.href = 'success.html'; }, 250);
       });
     }
 
@@ -315,6 +317,7 @@
   </script>
 </body>
 </html>
+
 
 
 
