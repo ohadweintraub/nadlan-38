@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>נדל״ן 38 — תיווך אחר</title>
   <link rel="icon" type="image/png" href="media/favicon.png">
   <link rel="apple-touch-icon" href="media/favicon.png">
@@ -36,7 +36,7 @@
     .btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:var(--shadow);transition:all .3s ease}
     .btn:hover{background:#0284c7;transform:translateY(-2px)}
     /* Hamburger base style */
-    .hamburger{display:none;border:1px solid #dde4ee;background:#fff;border-radius:12px;padding:10px 12px;font-size:20px;line-height:1}
+    .hamburger{display:none;border:1px solid #dde4ee;background:#fff;border-radius:12px;padding:10px 12px;font-size:20px;line-height:1;cursor:pointer;-webkit-tap-highlight-color:transparent}
     .hamburger:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(14,165,233,.25)}
 
     @media(max-width:880px){.nav-links{display:none}.hamburger{display:block}}
@@ -54,8 +54,8 @@
     .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.65))}
     .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
     @media (prefers-reduced-motion: reduce){.hero-video{display:none}.hero{background:#000 url('media/logo.png') center/contain no-repeat}}
-    .hero .container{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:85vh;padding:32px}
-    .hero-card{background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);padding:36px;border-radius:28px;max-width:880px;animation:fadeIn 1.2s ease}
+    .hero .container{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:85vh;min-height:100svh;padding:32px}
+    .hero-card{background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:36px;border-radius:28px;max-width:880px;animation:fadeIn 1.2s ease}
     h1{margin:6px 0 14px;font-size:clamp(28px,6vw,56px);line-height:1.15;color:#fff}
     .lead{font-size:clamp(16px,2.2vw,20px);color:#e2e8f0}
 
@@ -130,7 +130,7 @@
   <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
 
   <main id="top" class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/logo.png">
+    <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="media/logo.png">
       <source src="media/hero.mp4" type="video/mp4">
     </video>
     <div class="container">
@@ -144,7 +144,7 @@
 
   <section id="about">
     <div class="container card">
-      <h2>למה לעבוד איתנו?</h2>
+      <h2>למה לבעלי נכנסים לעבוד איתנו?</h2>
       <ul>
         <li>✅ שירות ללא עלות – בעלי נכסים לא משלמים, מקבלים שירות פרימיום.</li>
         <li>✅ חוסך לכם זמן – טיפול מלא בכל תהליך השיווק והתקשורת.</li>
@@ -158,7 +158,6 @@
   <section id="services">
     <div class="container card">
       <h2>נדל״ן 38 — למה ללקוחות לבחור בנו</h2>
-      <p><strong>:</strong></p>
       <p>נמאס לך לרדוף אחרי מודעות?<br>לחכות שמישהו יענה? לראות דירה ולהתאכזב?</p>
       <p><strong>אני לא מתווך רגיל. אני מייצג רק אותך.</strong></p>
       <ul>
@@ -278,11 +277,31 @@
       burger.addEventListener('click', ()=> setMenu(!document.body.classList.contains('menu-open')));
     }
     if (menuBackdrop){ menuBackdrop.addEventListener('click', ()=> setMenu(false)); }
-    mobileMenu?.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> setMenu(false)));
+    if (mobileMenu) {
+      var links = mobileMenu.querySelectorAll('a');
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function(){ setMenu(false); });
+      }
+    }
     const headerEl = document.querySelector('header');
     function applyHeaderH(){ if(headerEl) document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px'); }
     applyHeaderH();
     window.addEventListener('resize', applyHeaderH);
+
+    // Safari/iOS video fallback: אם הווידאו לא מתנגן, מציגים רקע סטטי עם הלוגו
+    (function(){
+      var hv = document.querySelector('.hero-video');
+      var hero = document.querySelector('.hero');
+      function fallbackHero(){ if (hero) hero.style.background = "#000 url('media/logo.png') center/contain no-repeat"; }
+      if (!hv) return;
+      try {
+        var p = hv.play && hv.play();
+        if (p && typeof p.catch === 'function') { p.catch(function(){ fallbackHero(); }); }
+      } catch(_) { fallbackHero(); }
+      hv.addEventListener('error', fallbackHero);
+      hv.addEventListener('stalled', fallbackHero);
+      hv.addEventListener('abort', fallbackHero);
+    })();
 
     // Reveal on scroll
     const targets = document.querySelectorAll('.card, .hero-card');
@@ -296,6 +315,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
