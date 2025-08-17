@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>נדל״ן 38 — תיווך אחר</title>
+  <link rel="icon" type="image/png" href="media/favicon.png">
+  <link rel="apple-touch-icon" href="media/favicon.png">
+  <meta property="og:title" content="נדל״ן 38 — תיווך אחר" />
+  <meta property="og:description" content="תיווך חד-צדדי וייצוג אישי. לבעלי נכסים: שירות פרימיום ללא עלות. לשוכרים וקונים: ליווי מלא עד חוזה." />
+  <meta property="og:image" content="media/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta name="description" content="נדל״ן 38 — תיווך אחר: ייצוג אישי לשוכרים וקונים, ולבעלי נכסים שירות פרימיום ללא עלות." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300..900&display=swap" rel="stylesheet">
+  <link rel="prefetch" href="success.html">
+  <style>
+    :root{
+      --brand:#0ea5e9;
+      --brand-2:#22c55e;
+      --muted:#64748b;
+      --shadow:0 10px 30px rgba(2,6,23,.15);
+    }
+    html,body{height:100%; scroll-behavior:smooth;}
+    body{margin:0;font-family:"Heebo",sans-serif;line-height:1.6;color:#0f172a;background:#f6f8fb;}
+    .container{width:min(1100px,92%);margin-inline:auto}
+
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e7eef6;box-shadow:0 6px 18px rgba(2,6,23,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(2,6,23,.2))}
+    .nav-links{display:flex;gap:22px;align-items:center}
+    .nav-links a{color:#0f172a;text-decoration:none;font-weight:600;transition:color .3s ease}
+    .nav-links a:hover{color:var(--brand)}
+    .btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:var(--shadow);transition:all .3s ease}
+    .btn:hover{background:#0284c7;transform:translateY(-2px)}
+
+    @media(max-width:880px){.nav-links{display:none}.hamburger{display:block}}
+
+    .hero{position:relative;isolation:isolate;text-align:center;color:#fff}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.65))}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    @media (prefers-reduced-motion: reduce){.hero-video{display:none}.hero{background:#000 url('media/logo.png') center/contain no-repeat}}
+    .hero .container{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:85vh;padding:32px}
+    .hero-card{background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);padding:36px;border-radius:28px;max-width:880px;animation:fadeIn 1.2s ease}
+    h1{margin:6px 0 14px;font-size:clamp(28px,6vw,56px);line-height:1.15;color:#fff}
+    .lead{font-size:clamp(16px,2.2vw,20px);color:#e2e8f0}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    section{padding-block:56px;scroll-margin-top:90px}
+    .card{background:#fff;border:1px solid #e8eef6;border-radius:20px;padding:24px;box-shadow:0 14px 38px rgba(2,6,23,.10);animation:fadeIn 1.2s ease}
+    h2{font-size:clamp(22px,3.2vw,34px);margin:0 0 10px}
+    ul{padding:0 20px;margin:0}
+    .muted{color:var(--muted)}
+
+    input,textarea{padding:14px;border:1px solid #dbe3ee;border-radius:14px;font-size:1rem;font-family:inherit;transition:border-color .2s ease,box-shadow .2s ease;width:100%}
+    input:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(14,165,233,.18)}
+    .form-group{position:relative}
+    .form-group i{position:absolute;top:50%;left:12px;transform:translateY(-50%);color:#94a3b8}
+    .form-group input,.form-group textarea{padding-left:40px}
+
+    /* ===== Reveal on scroll ===== */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* ===== Form icons (attribute selectors, RTL-aware) ===== */
+    input[name="name"], input[name="phone"], input[name="email"], textarea[name="msg"]{background-repeat:no-repeat; background-size:18px 18px; background-position:12px center}
+    input[name="name"], input[name="phone"], input[name="email"], textarea[name="msg"]{padding-left:42px}
+    input[name="name"]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E")}
+    input[name="phone"]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.3 1.76.57 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.12a2 2 0 0 1 2.11-.45c.84.27 1.71.45 2.6.57A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E")}
+    input[name="email"]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpolyline points='3,7 12,13 21,7'/%3E%3C/svg%3E")}
+    textarea[name="msg"]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z'/%3E%3C/svg%3E")}
+
+    /* ===== Responsive tweaks ===== */
+    @media (max-width:480px){
+      .brand img{width:48px; height:48px}
+      .hero .container{min-height:72vh; padding-block:56px}
+    }
+
+    footer{background:#0f172a;color:#cbd5e1;padding-block:28px;margin-top:36px}
+    .foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+    .contact{display:flex;gap:10px;flex-wrap:wrap}
+    .contact a{color:#cbd5e1;transition:color .3s ease}
+    .contact a:hover{color:#fff}
+    .wa-float{position:fixed;inset:auto 16px 16px auto;z-index:60;display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 10px 30px rgba(2,6,23,.25);text-decoration:none;font-size:28px;animation:pulse 2.2s infinite ease-in-out}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <img src="media/logo.png" alt="לוגו נדל״ן 38">
+        <span>נדל״ן 38</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">עלינו</a>
+        <a href="#services">שירותים</a>
+        <a href="#contact" class="btn">דברו איתנו</a>
+      </nav>
+      <button class="hamburger">☰</button>
+    </div>
+  </header>
+
+  <main id="top" class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/logo.png">
+      <source src="media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+      <div class="hero-card">
+        <h1>נדל״ן 38 — תיווך אחר</h1>
+        <p class="lead">תיווך אחר. בלי ניגוד אינטרסים. בלי כאב ראש.<br>בעלי נכסים? לא תשלמו – רק תרוויחו.<br>שוכרים או קונים? תקבלו ייצוג אישי אמיתי, מהחיפוש ועד החוזה.</p>
+        <a class="btn" href="#contact">השאירו פרטים</a>
+      </div>
+    </div>
+  </main>
+
+  <section id="about">
+    <div class="container card">
+      <h2>למה לעבוד איתנו?</h2>
+      <ul>
+        <li>✅ שירות ללא עלות – בעלי נכסים לא משלמים, מקבלים שירות פרימיום.</li>
+        <li>✅ חוסך לכם זמן – טיפול מלא בכל תהליך השיווק והתקשורת.</li>
+        <li>✅ לקוחות איכותיים בלבד – סינון קפדני וניהול פניות רציניות בלבד.</li>
+        <li>✅ התאמה מלאה – שוכר/קונה מותאם לפי קריטריונים שתבחרו.</li>
+        <li>✅ ליווי אישי עד סגירת חוזה – תהליך חלק, מהיר ובטוח.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container card">
+      <h2>נדל״ן 38 — למה ללקוחות לבחור בנו</h2>
+      <p><strong>✍️ אפשרות לתשובה קצרה לדף נחיתה / מודעה:</strong></p>
+      <p>נמאס לך לרדוף אחרי מודעות?<br>לחכות שמישהו יענה? לראות דירה ולהתאכזב?</p>
+      <p><strong>אני לא מתווך רגיל. אני מייצג רק אותך.</strong></p>
+      <ul>
+        <li>✔️ חיפוש מדויק לפי הצרכים שלך</li>
+        <li>✔️ סינון קפדני – בלי לבזבז זמן</li>
+        <li>✔️ ליווי מלא עד סגירת חוזה</li>
+        <li>✔️ משא ומתן לטובתך בלבד</li>
+      </ul>
+      <p>זה לא עוד שירות תיווך. זה ייצוג אישי שמביא אותך לבית הבא שלך – בלי סיבובים מיותרים.</p>
+    </div>
+  </section>
+
+  <section id="offer">
+    <div class="container card" style="text-align:center">
+      <h2>🎁 מבצע פתיחה מיוחד לבעלי נכסים</h2>
+      <p><strong>בלעדיות = מתנה 🎁</strong></p>
+      <p>כל בעל נכס שייתן לנו בלעדיות, וייסגר חוזה שכירות או מכירה – יקבל מאיתנו מתנה שווה לבחירה, כהוקרה על האמון.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container card">
+      <h2>דברו איתנו</h2>
+      <p class="muted">השאירו פרטים ונחזור אליכם במהירות</p>
+      <form id="main-form" class="grid" style="display:grid;gap:14px">
+        <div class="form-group">
+          <i class="fa fa-user"></i>
+          <input required name="name" placeholder="שם מלא">
+        </div>
+        <div class="form-group">
+          <i class="fa fa-phone"></i>
+          <input required name="phone" placeholder="טלפון">
+        </div>
+        <div class="form-group">
+          <i class="fa fa-envelope"></i>
+          <input name="email" placeholder="אימייל">
+        </div>
+        <div class="form-group">
+          <i class="fa fa-comment"></i>
+          <textarea name="msg" placeholder="הודעה" rows="4"></textarea>
+        </div>
+        <button class="btn" type="submit" style="padding:14px;font-size:1.05rem">שליחה ✉️</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div><strong>נדל״ן 38</strong> — © <span id="year"></span></div>
+      <div class="contact">
+        <a href="tel:+972000000000">טלפון</a>
+        <a href="https://wa.me/972000000000" target="_blank">WhatsApp</a>
+        <a href="mailto:info@nadlan38.co.il">info@nadlan38.co.il</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/972000000000" target="_blank" aria-label="WhatsApp">🟢</a>
+
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Apps Script endpoint (already set by you)
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFYHWX4XNuQWZMIl7cz0_UA65v5A8Xzg2ZRdK1EYjEpFVll4OLQ5EdAKiPfPmN6SbBLQ/exec';
+
+    // Fast submit -> background send -> immediate redirect
+    const form = document.getElementById('main-form');
+    if (form) {
+      form.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = 'מעביר…'; }
+
+        const get = (n) => form.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+        const payload = {
+          name: get('name'),
+          phone: get('phone'),
+          email: get('email'),
+          msg: get('msg'),
+          source: location.href,
+          ts: new Date().toISOString()
+        };
+        const urlParams = new URLSearchParams(payload).toString();
+
+        try {
+          let sent = false;
+          if (navigator.sendBeacon) {
+            const blob = new Blob([urlParams], { type: 'application/x-www-form-urlencoded;charset=UTF-8' });
+            sent = navigator.sendBeacon(APPS_SCRIPT_URL, blob);
+          }
+          if (!sent) {
+            fetch(APPS_SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              keepalive: true,
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+              body: urlParams
+            });
+          }
+        } catch (e) { /* ignore */ }
+
+        // Redirect immediately to success page
+        window.location.href = 'success.html';
+      });
+    }
+
+    // Reveal on scroll
+    const targets = document.querySelectorAll('.card, .hero-card');
+    if (targets.length) {
+      targets.forEach(el => el.classList.add('reveal'));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+      }, { threshold: 0.12 });
+      targets.forEach(el => io.observe(el));
+    }
+  </script>
+</body>
+</html>
+
+
+
+
